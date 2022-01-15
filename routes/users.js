@@ -2,6 +2,7 @@ var express = require('express');
 var app = express();
 var database = require('../config/database');
 var authValidations = require('../validations/validate');
+var passwordHash = require('password-hash');
 
 app.post('/users', (req, res) => {
 	let requestBody = req.body
@@ -14,7 +15,9 @@ app.post('/users', (req, res) => {
     	let firstName = requestBody.firstName
     	let lastName = requestBody.lastName
   		let email = requestBody.email
-  		let password = requestBody.password
+  		// Hashed password
+  		let password = passwordHash.generate(requestBody.password);
+  		
   		
   		// Check if user already exists
   		let sql = `SELECT * FROM USERS WHERE EMAIL = '${email}'`
@@ -35,7 +38,7 @@ app.post('/users', (req, res) => {
 				                res.status(400).send(err);
 				                return;
 				            }else{
-				                res.status(200).send("User joined Pixellery :)");
+				                res.status(200).send("User joined");
 				                return
 				            }
 				    });
