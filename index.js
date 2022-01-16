@@ -21,7 +21,8 @@ app.use(express.urlencoded({
 }));
 
 app.use('/',[
-    require('./routes/users')
+    require('./routes/users'),
+    require('./routes/auth')
 ]);
 
 app.listen(port, () => {

@@ -5,7 +5,7 @@ module.exports = function (requestBody) {
         firstName: Joi.string().required(),
         lastName: Joi.string().required(),
         email: Joi.string().email().required(),
-        password: Joi.string().min(8).max(20).required()
+        password: Joi.string().min(5).max(20).required()
     });
 
     return schema.validate(requestBody, {
