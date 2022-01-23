@@ -22,7 +22,8 @@ app.use(express.urlencoded({
 
 app.use('/',[
     require('./routes/users'),
-    require('./routes/auth')
+    require('./routes/auth'),
+    require('./routes/likes')
 ]);
 
 app.listen(port, () => {
