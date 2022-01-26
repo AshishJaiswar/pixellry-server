@@ -5,7 +5,7 @@ var database = require('../config/database');
 
 
 //Register :- This route will store the new user data into database
-app.post('/like', (req, res) => {
+app.post('/new-collection', (req, res) => {
 	let requestBody = req.body
 
 	let user_id = requestBody.user_id
@@ -24,5 +24,9 @@ app.post('/like', (req, res) => {
 	});
 })
 
+app.get('/get-collection/:id', (req, res) => {
+	console.log(req.params)
+	res.send("My collections")
+})
 
 module.exports = app;
