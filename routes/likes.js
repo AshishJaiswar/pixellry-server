@@ -9,9 +9,9 @@ app.post('/like', (req, res) => {
 	let requestBody = req.body
 
 	let user_id = requestBody.user_id
-	let img_id = requestBody.img_id
+	let resource_id = requestBody.resource_id
 
-	let sql = `INSERT INTO LIKES(USER_ID, IMG_ID) VALUES(${user_id}, ${img_id})`
+	let sql = `INSERT INTO LIKES(USER_ID, RESOURCE_ID) VALUES(${user_id}, ${resource_id})`
 
 	database.query(sql, (err) => {
         if (err) {
@@ -28,9 +28,9 @@ app.post('/unlike', (req, res) => {
 	let requestBody = req.body
 
 	let user_id = requestBody.user_id
-	let img_id = requestBody.img_id
+	let resource_id = requestBody.resource_id
 
-	let sql = `DELETE FROM LIKES WHERE IMG_ID = ${img_id} and USER_ID = ${user_id}`
+	let sql = `DELETE FROM LIKES WHERE RESOURCE_ID = ${resource_id} and USER_ID = ${user_id}`
 	database.query(sql, (err) => {
         if (err) {
             res.status(400).json({ message: err});
