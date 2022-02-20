@@ -26,7 +26,8 @@ app.use('/',[
     require('./routes/likes'),
     require('./routes/collection'),
     require('./routes/download'),
-    require('./routes/search')
+    require('./routes/search'),
+    require('./routes/account')
 ]);
 
 app.listen(port, () => {

@@ -36,8 +36,8 @@ app.post('/users', (req, res) => {
 			            message: "User already exists. Try another email id."
 			        })
 	            }else{ // else insert values to database
-	            	sql = `INSERT INTO USERS(first_name, last_name, email, password) 
-					VALUES('${firstName}', '${lastName}', '${email}', '${password}')`
+	            	sql = `INSERT INTO USERS(first_name, last_name, email, password, phone_no, dob, address, profile_img) 
+					VALUES('${firstName}', '${lastName}', '${email}', '${password}', 0, "", "", 'https://www.gravatar.com/avatar/542e167f5a3cfc520c5c86d5a5d96b88?s=256&d=mm')`
 				    database.query(sql, (err) => {
 				            if (err) {
 				                res.status(400).send(err);
