@@ -20,20 +20,22 @@ app.get('/get-account-details/:id', (req, res) => {
 app.put('/save-details', (req, res)=>{
 	let requestBody = req.body
 	console.log(requestBody)
-	// let user_id = requestBody.user_id
-	// let resource_id = requestBody.resource_id
+	let user_id = requestBody.user_id
+	let pho_no = requestBody.pho_no
+	let dob = requestBody.dob
+	let address = requestBody.address;
 
-	// let sql = `INSERT INTO DOWNLOADS(USER_ID, RESOURCE_ID) VALUES(${user_id}, ${resource_id})`
+	let sql = `update users set phone_no = ${pho_no}, dob = '${dob}', address = '${address}' where id = ${user_id}`
 
-	// database.query(sql, (err) => {
- //        if (err) {
- //            res.status(400).json({ message: err});
- //            return;
- //        }else{
- //            res.status(200).send("Download Sucess");
- //            return
- //        }
-	// });
+	database.query(sql, (err) => {
+        if (err) {
+            res.status(400).json({ message: err});
+            return;
+        }else{
+            res.status(200).send("Profile updated.");
+            return
+        }
+	});
 })
 
 module.exports = app;
