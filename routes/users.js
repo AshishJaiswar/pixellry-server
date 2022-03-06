@@ -21,6 +21,8 @@ app.post('/users', (req, res) => {
   		let email = requestBody.email
   		// Hashed password
   		let password = passwordHash.generate(requestBody.password);
+
+  		let date_joined = requestBody.joined_date
   		
   		
   		// Check if user already exists
@@ -36,8 +38,8 @@ app.post('/users', (req, res) => {
 			            message: "User already exists. Try another email id."
 			        })
 	            }else{ // else insert values to database
-	            	sql = `INSERT INTO USERS(first_name, last_name, email, password, phone_no, dob, address, profile_img) 
-					VALUES('${firstName}', '${lastName}', '${email}', '${password}', 0, "", "", 'https://www.gravatar.com/avatar/542e167f5a3cfc520c5c86d5a5d96b88?s=256&d=mm')`
+	            	sql = `INSERT INTO USERS(first_name, last_name, email, password, phone_no, dob, address, profile_img, date_joined) 
+					VALUES('${firstName}', '${lastName}', '${email}', '${password}', 0, "", "", 'https://www.gravatar.com/avatar/542e167f5a3cfc520c5c86d5a5d96b88?s=256&d=mm', '${date_joined}')`
 				    database.query(sql, (err) => {
 				            if (err) {
 				                res.status(400).send(err);

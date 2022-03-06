@@ -27,7 +27,8 @@ app.use('/',[
     require('./routes/collection'),
     require('./routes/download'),
     require('./routes/search'),
-    require('./routes/account')
+    require('./routes/account'),
+    require('./routes/admin')
 ]);
 
 app.listen(port, () => {

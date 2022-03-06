@@ -10,8 +10,9 @@ app.post('/like', (req, res) => {
 
 	let user_id = requestBody.user_id
 	let resource_link = requestBody.resource_link
+	let timestamp = requestBody.timestamp
 
-	let sql = `INSERT INTO LIKES(USER_ID, RESOURCE_LINK) VALUES(${user_id}, '${resource_link}')`
+	let sql = `INSERT INTO LIKES(USER_ID, RESOURCE_LINK, TIMESTAMP) VALUES(${user_id}, '${resource_link}', '${timestamp}')`
 
 	database.query(sql, (err) => {
         if (err) {

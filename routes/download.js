@@ -7,8 +7,10 @@ app.post('/download', (req, res) => {
 
 	let user_id = requestBody.user_id
 	let resource_id = requestBody.resource_id
+	let timestamp = requestBody.timestamp
 
-	let sql = `INSERT INTO DOWNLOADS(USER_ID, RESOURCE_ID) VALUES(${user_id}, ${resource_id})`
+
+	let sql = `INSERT INTO DOWNLOADS(USER_ID, RESOURCE_ID, TIMESTAMP) VALUES(${user_id}, ${resource_id}, '${timestamp}')`
 
 	database.query(sql, (err) => {
         if (err) {

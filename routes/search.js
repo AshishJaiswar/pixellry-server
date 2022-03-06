@@ -7,8 +7,9 @@ app.post('/keyword', (req, res) => {
 
 	let user_id = requestBody.user_id
 	let keyword = requestBody.keyword
+	let timestamp = requestBody.timestamp
 
-	let sql = `INSERT INTO KEYWORDS(USER_ID, KEYWORD) VALUES(${user_id}, '${keyword}')`
+	let sql = `INSERT INTO KEYWORDS(USER_ID, KEYWORD, timestamp) VALUES(${user_id}, '${keyword}', '${timestamp}')`
 
 	database.query(sql, (err) => {
         if (err) {
