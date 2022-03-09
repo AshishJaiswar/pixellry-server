@@ -53,5 +53,39 @@ app.get('/top-searches', (req, res) => {
 	});
 })
 
+app.get('/table-searches', (req, res) => {
+	let sql = `SELECT users.id, users.first_name, 
+	users.last_name, keywords.keyword, keywords.timestamp 
+	FROM users join keywords on users.id = keywords.user_id;`
+
+	database.query(sql, (err, result) => {
+        if (err) {
+            res.status(400).json({ message: err});
+            return;
+        }else{
+            res.send(result)
+            return
+        }
+	});
+})
+
+app.get('/table-downloads', (req, res) => {
+	let sql = `SELECT users.id, users.first_name, users.last_name, 
+	downloads.resource_id, downloads.timestamp 
+	FROM users join 
+	downloads on users.id = downloads.user_id;`
+
+	database.query(sql, (err, result) => {
+        if (err) {
+            res.status(400).json({ message: err});
+            return;
+        }else{
+            res.send(result)
+            return
+        }
+	});
+})
+
+
 
 module.exports = app;
