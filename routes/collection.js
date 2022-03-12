@@ -97,4 +97,22 @@ app.post('/add-to-collection', (req, res) =>{
 	});
 
 })
+
+app.get('/my-collections-resouce/:collection_name', (req, res) => {
+	const collection_name = req.params.collection_name
+	let sql = `select resource_id from 
+	collection_resource where 
+	collection_id = (select id from collections where collection_name = '${collection_name}');`
+
+	database.query(sql, (err, result) => {
+        if (err) {
+            res.status(400).json({ message: err});
+            return;
+        }else{
+            res.send(result)
+            return
+        }
+	});
+})
+
 module.exports = app;
